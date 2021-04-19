@@ -34,7 +34,7 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
 */
-//test
+//test2
 // counter1 code
 function counterMaker() {
   let count = 0;
