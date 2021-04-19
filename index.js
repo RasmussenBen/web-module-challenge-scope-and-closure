@@ -33,7 +33,7 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
     counter2 utilizes a closure at count++ is reaching outside of the counter2 function to determine the value of count.
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?
-     ???
+     counter1 is fine in isolation, counter2 is more flexible for a large project where it will be reused.
 */
 // counter1 code
 function counterMaker() {
@@ -150,12 +150,12 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(getInningScorecb, inningcb, nameofInningCB) {
+function scoreboard(getInningScorecb, inningcb, inningsPlayed) {
   let scores = [];
   let home = 0;
   let away = 0;
 
-  for (let i = 0; i < nameofInningCB; i++) {
+  for (let i = 0; i < inningsPlayed; i++) {
     let inningScore = getInningScore(inningcb);
     home += inningScore.Home;
     away += inningScore.Away;
@@ -163,6 +163,8 @@ function scoreboard(getInningScorecb, inningcb, nameofInningCB) {
   }
   if (home === away) {
     scores.push (`This game will require extra innings: ${away} - ${home}`)
+  } else {
+    scores.push (`Final Score: ${away} - ${home}`)
   }
   return scores;
 }
