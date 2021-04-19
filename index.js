@@ -66,7 +66,6 @@ function inning(){
     return Math.ceil(Math.random() * 2);
 }
 
-
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
 Use the finalScore function below to do the following:
   1. Receive the callback function `inning` that was created in Task 2 
@@ -81,19 +80,36 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inningcb, inningsPlayed){
+  const totalScore = 0;
+  let homeScore = 0;
+  let awayScore = 0;
+
+  for (let i = 0; i < inningsPlayed; i++) {
+    homeScore = homeScore + inningcb();
+    awayScore = awayScore + inningcb();
+    totalScore = awayScore + homeScore;
+  }
+  return {
+    Away: awayScore,
+    Home: homeScore,
+  }
 }
+console.log(finalScore(inning, 9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inningcb) {
+  return {
+    Home: inningcb(),
+    Away: inningcb()
+  }
 }
 
+console.log(getInningScore(inning));
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
@@ -136,10 +152,23 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function scoreboard(getInningScorecb, inningcb, nameofInningCB) {
+  let scores = [];
+  let home = 0;
+  let away = 0;
 
+  for (let i = 0; i < nameofInningCB; i++) {
+    let inningScore = getInningScore(inningcb);
+    home += inningScore.Home;
+    away += inningScore.Away;
+    scores.push(`Inning ${i+1} : Away ${inningScore.Away} - Home ${inningScore.Home}`)
+  }
+  if (home === away) {
+    scores.push (`This game will require extra innings: ${away} - ${home}`)
+  }
+  return scores;
+}
+console.log(scoreboard(getInningScore, inning, 3));
 
 
 
