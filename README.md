@@ -43,6 +43,7 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+  A closure is a function that is able to access variables from its place of definition, even if it is later executed outside of that original scope.
 2. Study the following code, then answer the questions below.
 
 ```js
