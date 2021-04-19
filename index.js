@@ -80,19 +80,17 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(inningcb, inningsPlayed){
-  const totalScore = 0;
+function finalScore(inningcb, inningsPlayed) {
   let homeScore = 0;
   let awayScore = 0;
 
   for (let i = 0; i < inningsPlayed; i++) {
-    homeScore = homeScore + inningcb();
-    awayScore = awayScore + inningcb();
-    totalScore = awayScore + homeScore;
+    homeScore += inningcb();
+    awayScore += inningcb();
   }
   return {
     Away: awayScore,
-    Home: homeScore,
+    Home: homeScore
   }
 }
 console.log(finalScore(inning, 9));
@@ -168,7 +166,7 @@ function scoreboard(getInningScorecb, inningcb, nameofInningCB) {
   }
   return scores;
 }
-console.log(scoreboard(getInningScore, inning, 3));
+console.log(scoreboard(getInningScore, inning, 9));
 
 
 
